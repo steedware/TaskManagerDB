@@ -22,7 +22,6 @@ Kompleksowy system zarządzania zadaniami zbudowany przy użyciu React, Node.js,
 - **Frontend**: React, React Router, React Bootstrap
 - **Backend**: Node.js, Express
 - **Baza danych**: MongoDB
-- **Uwierzytelnianie**: Tokeny JWT (JSON Web Tokens)
 - **Komunikacja API**: Axios
 
 ## Struktura Aplikacji
@@ -54,7 +53,6 @@ Kompleksowy system zarządzania zadaniami zbudowany przy użyciu React, Node.js,
    ```
    PORT=5000
    MONGO_URI=mongodb://localhost:27017/task-manager
-   JWT_SECRET=twój_tajny_klucz_jwt
    NODE_ENV=development
    ```
 
