@@ -116,7 +116,7 @@ Przy pierwszym uruchomieniu aplikacji, musisz utworzyć użytkownika administrat
 
 ## Licencja
 
-Ten projekt jest objęty licencją MIT.# TaskManagerDB
+Ten projekt jest objęty licencją MIT
 
 
 
