@@ -113,8 +113,7 @@ Przy pierwszym uruchomieniu aplikacji, musisz utworzyć użytkownika administrat
 - Możliwość dodawania notatek i komentarzy do zadań
 
 ## Licencja
-
-### Ten projekt jest objęty licencją MIT.
+Ten projekt jest objęty licencją MIT.
 
 
 
