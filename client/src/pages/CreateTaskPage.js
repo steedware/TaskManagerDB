@@ -12,7 +12,6 @@ const CreateTaskPage = () => {
   const [assignedTo, setAssignedTo] = useState('');
   const [priority, setPriority] = useState('medium');
   const [dueDate, setDueDate] = useState('');
-  const [dueTime, setDueTime] = useState('');
   const [stages, setStages] = useState([{ name: '' }]);
   const [loading, setLoading] = useState(false);
   const [usersLoading, setUsersLoading] = useState(true);
@@ -79,24 +78,12 @@ const CreateTaskPage = () => {
       setError('');
       setLoading(true);
       
-      // Combine date and time for the due date
-      let fullDueDate = new Date(dueDate);
-      
-      if (dueTime) {
-        const [hours, minutes] = dueTime.split(':');
-        fullDueDate.setHours(parseInt(hours, 10));
-        fullDueDate.setMinutes(parseInt(minutes, 10));
-      } else {
-        // Set default end of day if no specific time is provided
-        fullDueDate.setHours(23, 59, 59);
-      }
-      
       const taskData = {
         title,
         description,
         assignedTo,
         priority,
-        dueDate: fullDueDate.toISOString(),
+        dueDate,
         stages: filteredStages
       };
       
@@ -189,12 +176,9 @@ const CreateTaskPage = () => {
                       </Form.Select>
                     </Form.Group>
                   </Col>
-                </Row>
-
-                <Row>
                   <Col md={6}>
                     <Form.Group controlId="dueDate" className="mb-3">
-                      <Form.Label>Data terminu</Form.Label>
+                      <Form.Label>Termin wykonania</Form.Label>
                       <Form.Control
                         type="date"
                         value={dueDate}
@@ -202,19 +186,6 @@ const CreateTaskPage = () => {
                         min={today}
                         required
                       />
-                    </Form.Group>
-                  </Col>
-                  <Col md={6}>
-                    <Form.Group controlId="dueTime" className="mb-3">
-                      <Form.Label>Godzina terminu</Form.Label>
-                      <Form.Control
-                        type="time"
-                        value={dueTime}
-                        onChange={(e) => setDueTime(e.target.value)}
-                      />
-                      <Form.Text className="text-muted">
-                        Opcjonalnie. Domyślnie koniec dnia (23:59).
-                      </Form.Text>
                     </Form.Group>
                   </Col>
                 </Row>
