@@ -22,7 +22,6 @@ Kompleksowy system zarządzania zadaniami zbudowany przy użyciu React, Node.js,
 - **Frontend**: React, React Router, React Bootstrap
 - **Backend**: Node.js, Express
 - **Baza danych**: MongoDB
-- **Uwierzytelnianie**: Tokeny JWT (JSON Web Tokens)
 - **Komunikacja API**: Axios
 
 ## Struktura Aplikacji
@@ -54,7 +53,6 @@ Kompleksowy system zarządzania zadaniami zbudowany przy użyciu React, Node.js,
    ```
    PORT=5000
    MONGO_URI=mongodb://localhost:27017/task-manager
-   JWT_SECRET=twój_tajny_klucz_jwt
    NODE_ENV=development
    ```
 
@@ -115,5 +113,12 @@ Przy pierwszym uruchomieniu aplikacji, musisz utworzyć użytkownika administrat
 - Możliwość dodawania notatek i komentarzy do zadań
 
 ## Licencja
+Ten projekt jest objęty licencją MIT.
 
-Ten projekt jest objęty licencją MIT.# TaskManagerDB
+
+
+![{C9281D11-14A1-47B7-96E0-5CE146E93B58}](https://github.com/user-attachments/assets/3a4702af-01af-4d8e-9845-77e192cb8e50)
+![{22459701-1C57-4C29-8F74-8A0538C07CF5}](https://github.com/user-attachments/assets/0dbb7308-7645-43f3-98b8-4784f20b808d)
+![{CA921768-7B02-4DB4-9695-3B99DAD5E337}](https://github.com/user-attachments/assets/ba04f7dd-c4a9-4f32-823b-76dcb0b5b9b8)
+
+
