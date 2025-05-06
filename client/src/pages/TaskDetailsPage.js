@@ -304,32 +304,32 @@ const TaskDetailsPage = () => {
             <Card.Body>
               <p>Obecny status: <Badge bg={getStatusBadge(task.status)}>{translateStatus(task.status)}</Badge></p>
               
-              <div className="d-flex flex-wrap gap-2 mt-3">
-                <Button
-                  variant={task.status === 'pending' ? 'secondary' : 'outline-secondary'}
-                  size="sm"
-                  onClick={() => handleStatusChange('pending')}
-                  disabled={task.status === 'pending' || submitLoading || (!isAdmin && task.assignedTo._id !== user._id)}
-                >
-                  Oczekujące
-                </Button>
-                <Button
-                  variant={task.status === 'in-progress' ? 'primary' : 'outline-primary'}
-                  size="sm"
-                  onClick={() => handleStatusChange('in-progress')}
-                  disabled={task.status === 'in-progress' || submitLoading || (!isAdmin && task.assignedTo._id !== user._id)}
-                >
-                  W trakcie
-                </Button>
-                <Button
-                  variant={task.status === 'completed' ? 'success' : 'outline-success'}
-                  size="sm"
-                  onClick={() => handleStatusChange('completed')}
-                  disabled={task.status === 'completed' || submitLoading || (!isAdmin && task.assignedTo._id !== user._id)}
-                >
-                  Zakończone
-                </Button>
-                {isAdmin && (
+              {isAdmin && (
+                <div className="d-flex flex-wrap gap-2 mt-3">
+                  <Button
+                    variant={task.status === 'pending' ? 'secondary' : 'outline-secondary'}
+                    size="sm"
+                    onClick={() => handleStatusChange('pending')}
+                    disabled={task.status === 'pending' || submitLoading}
+                  >
+                    Oczekujące
+                  </Button>
+                  <Button
+                    variant={task.status === 'in-progress' ? 'primary' : 'outline-primary'}
+                    size="sm"
+                    onClick={() => handleStatusChange('in-progress')}
+                    disabled={task.status === 'in-progress' || submitLoading}
+                  >
+                    W trakcie
+                  </Button>
+                  <Button
+                    variant={task.status === 'completed' ? 'success' : 'outline-success'}
+                    size="sm"
+                    onClick={() => handleStatusChange('completed')}
+                    disabled={task.status === 'completed' || submitLoading}
+                  >
+                    Zakończone
+                  </Button>
                   <Button
                     variant={task.status === 'reviewed' ? 'info' : 'outline-info'}
                     size="sm"
@@ -338,8 +338,13 @@ const TaskDetailsPage = () => {
                   >
                     Sprawdzone
                   </Button>
-                )}
-              </div>
+                </div>
+              )}
+              {!isAdmin && (
+                <Alert variant="info" className="mt-3">
+                  Status zadania może być zmieniony tylko przez administratora lub automatycznie po ukończeniu wszystkich etapów.
+                </Alert>
+              )}
             </Card.Body>
           </Card>
         </Col>

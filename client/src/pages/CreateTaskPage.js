@@ -12,6 +12,7 @@ const CreateTaskPage = () => {
   const [assignedTo, setAssignedTo] = useState('');
   const [priority, setPriority] = useState('medium');
   const [dueDate, setDueDate] = useState('');
+  const [dueTime, setDueTime] = useState(''); // Zmiana z '23:59' na pustą wartość
   const [stages, setStages] = useState([{ name: '' }]);
   const [loading, setLoading] = useState(false);
   const [usersLoading, setUsersLoading] = useState(true);
@@ -84,6 +85,7 @@ const CreateTaskPage = () => {
         assignedTo,
         priority,
         dueDate,
+        dueTime,
         stages: filteredStages
       };
       
@@ -189,6 +191,19 @@ const CreateTaskPage = () => {
                     </Form.Group>
                   </Col>
                 </Row>
+
+                <Form.Group controlId="dueTime" className="mb-3">
+                  <Form.Label>Godzina wykonania (opcjonalna)</Form.Label>
+                  <Form.Control
+                    type="time"
+                    value={dueTime}
+                    onChange={(e) => setDueTime(e.target.value)}
+                    placeholder=""
+                  />
+                  <Form.Text className="text-muted">
+                    Jeśli pole jest puste, zadanie będzie miało termin na koniec dnia (23:59)
+                  </Form.Text>
+                </Form.Group>
 
                 <Form.Group controlId="stages" className="mb-3">
                   <Form.Label>Etapy zadania</Form.Label>

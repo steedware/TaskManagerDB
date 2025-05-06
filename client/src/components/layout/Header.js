@@ -2,12 +2,15 @@ import React, { useContext } from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { AuthContext } from '../../context/AuthContext';
+import { useHistory } from 'react-router-dom';
 
 const Header = () => {
   const { user, logout, isAuthenticated, isAdmin } = useContext(AuthContext);
+  const history = useHistory();
 
   const handleLogout = () => {
     logout();
+    history.push('/'); // Przekierowanie do strony głównej po wylogowaniu
   };
 
   return (

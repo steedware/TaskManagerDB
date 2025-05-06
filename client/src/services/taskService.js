@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-// Get all tasks
 export const getAllTasks = async () => {
   try {
     const { data } = await axios.get('/tasks');
@@ -10,7 +9,6 @@ export const getAllTasks = async () => {
   }
 };
 
-// Get task by ID
 export const getTaskById = async (id) => {
   try {
     const { data } = await axios.get(`/tasks/${id}`);
@@ -20,9 +18,21 @@ export const getTaskById = async (id) => {
   }
 };
 
-// Create new task (admin only)
 export const createTask = async (taskData) => {
   try {
+    if (taskData.dueDate) {
+      const dateStr = taskData.dueDate;
+      const timeStr = (taskData.dueTime && taskData.dueTime.trim() !== '') ? taskData.dueTime : '23:59';
+      
+      const combinedDateTime = new Date(`${dateStr}T${timeStr}`);
+      
+      taskData = {
+        ...taskData,
+        dueDate: combinedDateTime,
+        dueTime: undefined
+      };
+    }
+    
     const { data } = await axios.post('/tasks', taskData);
     return data;
   } catch (error) {
@@ -30,7 +40,6 @@ export const createTask = async (taskData) => {
   }
 };
 
-// Update task
 export const updateTask = async (id, taskData) => {
   try {
     const { data } = await axios.put(`/tasks/${id}`, taskData);
@@ -40,7 +49,6 @@ export const updateTask = async (id, taskData) => {
   }
 };
 
-// Delete task (admin only)
 export const deleteTask = async (id) => {
   try {
     const { data } = await axios.delete(`/tasks/${id}`);
@@ -50,7 +58,6 @@ export const deleteTask = async (id) => {
   }
 };
 
-// Add note to task
 export const addTaskNote = async (taskId, content) => {
   try {
     const { data } = await axios.post(`/tasks/${taskId}/notes`, { content });
@@ -60,7 +67,6 @@ export const addTaskNote = async (taskId, content) => {
   }
 };
 
-// Update task stage
 export const updateTaskStage = async (taskId, stageIndex, completed) => {
   try {
     const { data } = await axios.put(`/tasks/${taskId}/stages/${stageIndex}`, { completed });
@@ -70,7 +76,6 @@ export const updateTaskStage = async (taskId, stageIndex, completed) => {
   }
 };
 
-// Approve task stage (admin only)
 export const approveTaskStage = async (taskId, stageIndex) => {
   try {
     const { data } = await axios.put(`/tasks/${taskId}/stages/${stageIndex}/approve`);

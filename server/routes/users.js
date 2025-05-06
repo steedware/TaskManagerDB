@@ -10,15 +10,12 @@ const {
 } = require('../controllers/userController');
 const { protect, admin } = require('../middleware/auth');
 
-// Register and get users
 router.route('/')
   .post(registerUser)
   .get(protect, admin, getUsers);
 
-// Login
 router.post('/login', loginUser);
 
-// User profile
 router.route('/profile')
   .get(protect, getUserProfile)
   .put(protect, updateUserProfile)

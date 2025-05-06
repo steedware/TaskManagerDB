@@ -7,7 +7,6 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Check if user is logged in on page load
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
@@ -16,10 +15,8 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
-  // Configure axios to use the API base URL
   axios.defaults.baseURL = 'http://localhost:5000/api';
 
-  // Add authorization header to all requests if user is logged in
   axios.interceptors.request.use(
     (config) => {
       if (user && user.token) {
@@ -32,7 +29,6 @@ export const AuthProvider = ({ children }) => {
     }
   );
 
-  // Login user
   const login = async (email, password) => {
     try {
       const { data } = await axios.post('/users/login', { email, password });
@@ -44,7 +40,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Register user
   const register = async (name, email, password) => {
     try {
       const { data } = await axios.post('/users', { name, email, password });
@@ -56,7 +51,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Update user profile
   const updateProfile = async (userData) => {
     try {
       const { data } = await axios.put('/users/profile', userData);
@@ -68,7 +62,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Delete user account
   const deleteAccount = async () => {
     try {
       await axios.delete('/users/profile');
@@ -79,7 +72,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Logout user
   const logout = () => {
     setUser(null);
     localStorage.removeItem('user');
