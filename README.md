@@ -115,6 +115,9 @@ Przy pierwszym uruchomieniu aplikacji, musisz utworzyć użytkownika administrat
 ## Licencja
 Ten projekt jest objęty licencją MIT.
 
+## Autor
+`steedware`
+
 
 
 ![{C9281D11-14A1-47B7-96E0-5CE146E93B58}](https://github.com/user-attachments/assets/3a4702af-01af-4d8e-9845-77e192cb8e50)
