@@ -1,7 +1,5 @@
 # Task Management System
 
-**Author**: steedware
-
 A comprehensive task management system built using React, Node.js, Express, and MongoDB.
 
 ## Features
